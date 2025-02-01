@@ -118,6 +118,17 @@
         </section>
 
     </div>
+<p>Visitor Count: <span id="visitor-count">Loading...</span></p>
+<script>
+    // Fetch visitor count from the API Gateway endpoint
+    async function getVisitorCount() {
+      const response = await fetch('arn:aws:execute-api:eu-west-2:324078474951:bu7lwih0gf/*/GET/increment');
+      const data = await response.json();
+      document.getElementById('visitor-count').textContent = data.visitorCount;
+    }
 
+    // Call the function when the page loads
+    window.onload = getVisitorCount;
+  </script>
 </body>
 </html>
